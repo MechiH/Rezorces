@@ -1,0 +1,374 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #1a202c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.container {
+    width: 80%;
+    height: 85%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+    flex-direction: column;
+}
+.head {
+    width: 60%;
+    height: 11%;
+    background: #da0037;
+    box-shadow: 0px 0px 47px -1px rgba(218, 0, 55, 0.55);
+    -webkit-box-shadow: 0px 0px 47px -1px rgba(218, 0, 55, 0.55);
+    -moz-box-shadow: 0px 0px 47px -1px rgba(218, 0, 55, 0.55);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.head .DayDate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: aliceblue;
+    font-size: 2em;
+    font-family: "Advent Pro", sans-serif;
+    z-index: 10;
+}
+.head .DayDate span {
+    font-size: 0.5em;
+}
+.head .las {
+    color: aliceblue;
+    font-size: 1.8em;
+}
+.head .filter {
+    margin-left: 15px;
+    cursor: pointer;
+    position: relative;
+}
+.head .Calendar {
+    margin-right: 15px;
+}
+.box {
+    display: inline-block;
+    background-color: #da0037;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.box::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 2px;
+    width: 60%;
+    background-color: #da0037;
+}
+.box input[type="date"],
+.box input[type="date"]:focus,
+.box input[type="date"]:valid {
+    color: transparent;
+    background: transparent;
+    border: none;
+    outline: none !important;
+}
+.box input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(/images/calendar.svg) no-repeat;
+    background-position: center center;
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+    border-width: thin;
+    cursor: pointer;
+}
+.box input[type="date"]::-webkit-input-placeholder {
+    visibility: hidden !important;
+}
+
+.space {
+    width: 30px;
+}
+.body {
+    width: 60%;
+    height: 75%;
+    background: #212f44;
+    box-shadow: 0px 0px 47px -1px rgba(33, 47, 68, 0.55);
+    -webkit-box-shadow: 0px 0px 47px -1px rgba(33, 47, 68, 0.55);
+    -moz-box-shadow: 0px 0px 47px -1px rgba(33, 47, 68, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ListOfTodos {
+    width: 87%;
+    height: 75%;
+    overflow-y: auto;
+    margin-left: 20px;
+}
+.Todo {
+    font-family: "Zen Loop", cursive;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    height: 10%;
+    width: 97%;
+    margin-bottom: 6%;
+}
+.Todo h2 {
+    padding-left: 30px;
+    width: 80%;
+}
+.Todo .priority {
+    width: 6px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #da0037;
+    left: 0;
+}
+.Todo .las {
+    font-size: 1.3em;
+    cursor: pointer;
+}
+.Todo .edit {
+    margin-left: auto;
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.Todo .la-check-circle {
+    color: #00ead3;
+}
+.Todo .la-truck-loading {
+    color: #ff449f;
+}
+.Todo .la-i-cursor {
+    color: #b5eaea;
+}
+
+.addTaskButton {
+    position: absolute;
+    bottom: 1%;
+    width: 13%;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-family: "Advent Pro", sans-serif;
+    font-weight: 900;
+    font-size: 1em;
+    background: #1eafed;
+    color: #fff;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: 0px 0px 11px 0px rgba(30, 175, 237, 0.75);
+    -webkit-box-shadow: 0px 0px 11px 0px rgba(30, 175, 237, 0.75);
+    -moz-box-shadow: 0px 0px 11px 0px rgba(30, 175, 237, 0.75);
+    cursor: pointer;
+}
+.addTaskButton .la-plus {
+    -webkit-text-stroke: 1px #fff;
+    color: #fff;
+    display: block;
+}
+.addTaskPopUp {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    background: #1f2c3f7c;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
+}
+.addTaskPopUp form {
+    width: 30%;
+    height: 32%;
+    background: #f5f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0.5em;
+    box-shadow: 0 10px 20px rgba(black, 0.2);
+    position: relative;
+    z-index: 11;
+}
+.addTaskPopUp input,
+.addTaskPopUp select {
+    margin-top: 20px;
+    width: 80%;
+    height: 15%;
+    background: #00c1d4;
+    border: none;
+    padding-left: 10px;
+    color: #fff;
+    font-family: "Zen Loop", cursive;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.addTaskPopUp input::placeholder {
+    color: #fff;
+}
+.addTaskPopUp h2 {
+    color: #512d6d;
+    font-weight: bold;
+    font-family: "Zen Loop", cursive;
+}
+.addTaskPopUp form .la-save,
+.addTaskPopUp form .la-feather {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-size: 1.5em;
+    color: #ff3d68;
+    cursor: pointer;
+}
+.addTaskPopUp .la-times {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    background: #da0037;
+    padding: 10px 15px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.addTaskPopUp .closePopup {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 11;
+}
+.none {
+    display: none;
+}
+.addTaskPopUp input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url("/images/calendar.svg") no-repeat;
+    background-position: center center;
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+    border-width: thin;
+    cursor: pointer;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #da0037;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #1eafed;
+}
+::-webkit-scrollbar-button {
+    height: 8px;
+}
+.barred-High {
+    text-decoration: line-through #ff467e;
+    transition: 0.1s text-decoration;
+}
+.barred-Medium {
+    text-decoration: line-through #fecd1a;
+    transition: 0.1s text-decoration;
+}
+.barred-Low {
+    text-decoration: line-through #83ffe6;
+    transition: 0.1s text-decoration;
+}
+.ChooseFilter {
+    position: absolute;
+    height: 6em;
+    width: 6em;
+    background: #fff;
+    top: 15px;
+    left: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 5px;
+}
+.ChooseFilter li {
+    list-style-type: none;
+    padding-left: 10px;
+    height: 33.3%;
+    font-family: "Advent Pro", sans-serif;
+    display: flex;
+    align-items: center;
+}
+.ChooseFilter li:hover {
+    background-color: #1eafed;
+    border-radius: 5px;
+    color: #fff;
+}
+.none {
+    display: none;
+}
+.swing-in-left-bck {
+    -webkit-animation: swing-in-left-bck 0.6s
+        cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    animation: swing-in-left-bck 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        both;
+}
+@-webkit-keyframes swing-in-left-bck {
+    0% {
+        -webkit-transform: rotateY(-70deg);
+        transform: rotateY(-70deg);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+        opacity: 1;
+    }
+}
+@keyframes swing-in-left-bck {
+    0% {
+        -webkit-transform: rotateY(-70deg);
+        transform: rotateY(-70deg);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+        opacity: 1;
+    }
+}
